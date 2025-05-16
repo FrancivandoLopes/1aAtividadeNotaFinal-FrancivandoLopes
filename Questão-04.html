@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Questão 4 - Calculadora de IMC.</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f9;
+      margin: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .calculator-container {
+      background-color: white;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      padding: 20px;
+      width: 100%;
+      max-width: 400px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+    h2 {
+      text-align: center;
+      color: #0e81e6;
+      margin-bottom: 20px;
+    }
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+    input, button {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-size: 14px;
+    }
+    input:focus {
+      border-color: #0e81e6;
+      outline: none;
+      box-shadow: 0 0 5px rgba(14, 129, 230, 0.5);
+      transition: box-shadow 0.3s ease-in-out;
+    }
+    button {
+      background-color: #0e81e6;
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    button:hover {
+      background-color: #086bb8;
+      transition: background-color 0.3s ease;
+    }
+    .result {
+      text-align: center;
+      font-size: 16px;
+      margin-top: 10px;
+    }
+    .result.success {
+      color: green;
+    }
+    .result.error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <div class="calculator-container">
+    <h2>Calculadora de IMC</h2>
+    <form id="imcForm">
+      <label for="weight">Peso (kg):</label>
+      <input type="number" id="weight" name="weight" placeholder="Digite seu peso" step="0.1" required>
+      <label for="height">Altura (m):</label>
+      <input type="number" id="height" name="height" placeholder="Digite sua altura" step="0.01" required> 
+      <button type="submit">Calcular IMC</button>
+      <div id="imcResult" class="result"></div>
+    </form>
+  </div>
+  <script>
+    document.getElementById("imcForm").addEventListener("submit", function(event) {
+      event.preventDefault();
+      // recebendo os valores de peso e altura
+      const weight = parseFloat(document.getElementById("weight").value);
+      const height = parseFloat(document.getElementById("height").value);
+      const imcResult = document.getElementById("imcResult");
+      // Verificando a validade dos valores apresentados
+      if (isNaN(weight) || isNaN(height) || weight <= 0 || height <= 0) {
+        imcResult.textContent = "Por favor, insira valores válidos para peso e altura.";
+        imcResult.className = "result error";
+        return;
+      }
+      // calculo de imc onde imc = peso/altura² e arredondado o resultado para duas casas decimais
+      const imc = (weight / (height * height)).toFixed(2);
+      imcResult.textContent = `Seu IMC é: ${imc}`;
+      imcResult.className = "result success";
+    });
+  </script>
+</body>
+</html>

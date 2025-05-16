@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Questão 2 - Tabela de Produtos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInTable 2s ease-out forwards;
+        }
+        @keyframes fadeInTable {
+            to {
+            opacity: 1;
+            transform: translateY(0);
+            }
+        }
+        th, td {
+        text-align: left;
+         padding: 12px;
+        }
+        th {
+         background-color: #0e81e6;
+          color: white;
+         text-transform: uppercase;
+        }
+        tr:nth-child(odd) {
+        background-color: #e9f4fc;
+        }
+        tr:nth-child(even) {
+        background-color: #ffffff;
+        }
+        tr {
+            transition: background-color 0.3s, transform 0.2s;
+        }
+        tr:hover {
+          background-color: #cde6f9;
+            transform: scale(1.03);
+            box-shadow: 0 4px 16px rgba(14,129,230,0.08);
+            z-index: 1;
+            position: relative;
+        }
+        caption {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+            color: #0e81e6;
+            font-weight: bold;
+            animation: colorCycle 2.5s infinite alternate;
+        }
+        @keyframes colorCycle {
+            0% { color: #0e81e6; }
+            50% { color: #a51027; }
+            100% { color: #16a085; }
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <caption>Tabela de Produtos</caption>
+        <thead>
+            <tr>
+            <th>Produto</th>
+             <th>Descrição</th>
+              <th>Preço (R$)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+            <td>Sofá</td>
+             <td>Sofá retratil e reclinavel com rodizio</td>
+              <td>3.500,00</td>
+            </tr>
+            <tr>
+             <td>Mesa</td>
+              <td>Mesa de jantar com base de madeira e tampo de vdo/</td>
+              <td>2.200,00</td>
+            </tr>
+            <tr>
+            <td>Caixa de som</td>
+            <td>Caixa de som Hot-sat 500w de potência, bluethooth</td>
+             <td>800,00</td>
+            </tr>
+            <tr>
+            <td>Cadeira</td>
+            <td>Cadeira de escritório com rodizio ergonomica</td>
+             <td>1250,00</td>
+            </tr>
+            <tr>
+            <td>Colchão</td>
+            <td>Colchão box casal com molas ensacadas</td>
+             <td>1120,00</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

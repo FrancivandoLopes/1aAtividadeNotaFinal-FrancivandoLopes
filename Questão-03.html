@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Questão 3 - Formulário de Contato</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f9;
+      margin: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .form-container {
+      background-color: white;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      padding: 20px;
+      width: 100%;
+      max-width: 400px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      }
+    h2 {
+      text-align: center;
+      color: #0e81e6;
+      margin-bottom: 20px;
+    }
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+    input, textarea, button {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-size: 14px;
+    }                           
+    input:focus, textarea:focus {
+      border-color: #0e81e6;
+      outline: none;
+      box-shadow: 0 0 5px rgba(14, 129, 230, 0.5);
+      transition: box-shadow 0.3s ease-in-out;
+    }
+    button {               
+      background-color: #0e81e6;
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    button:hover {
+      background-color: #086bb8;
+      transition: background-color 0.3s ease;
+    }
+    .message {
+      text-align: center;
+      font-size: 14px;      
+      margin-top: 10px; 
+    } 
+    .m essage.success {
+      color: green;
+    }
+    .message.error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <h2>Formulário de Contato</h2>
+    <form id="contactForm">
+      <label for="name">Nome</label>
+      <input type="text" id="name" name="name" placeholder="Seu nome">
+      
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" placeholder="Seu email">
+      
+      <label for="message">Mensagem</label>
+      <textarea id="message" name="message" rows="4" placeholder="Sua mensagem..."></textarea>
+      
+      <button type="submit">Enviar</button>
+      <div id="formMessage" class="message"></div>
+    </form>
+  </div>
+
+  <script>
+    document.getElementById("contactForm").addEventListener("submit", function(event) {
+      event.preventDefault();
+      
+      // recebendo os valores dos campos validados
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const message = document.getElementById("message").value.trim();
+    const formMessage = document.getElementById("formMessage");
+      
+      // Validando os campos que são obrigatorios
+      if (!name || !email || !message) {
+    formMessage.textContent = "Opa! Você não preencheu os campos obrigatórios.\u{1F644}";
+    formMessage.className = "message error";
+      return;
+      }
+      // verificando se o email é valido
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email)) {
+     formMessage.textContent = "umm... Esse email não é válido.\u{1FAE0}";
+      formMessage.className = "message error";
+        return;
+      }
+      
+      // se todos os campos forem preenchidos corretamente
+    formMessage.textContent = "yeaaah!! Sua mensagem foi reportada com sucesso.Grato!\u{1F60E}";
+     formMessage.className = "message success";
+    });
+  </script>
+</body>
+</html>
